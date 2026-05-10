@@ -84,6 +84,18 @@ Zod provides:
 
 ---
 
+# Validation
+
+TypeScript and Zod solve different problems and are used together for reliable form and data handling.
+
+TypeScript works at compile time and ensures type safety in your code. It helps you define what shape your data should have, but it does not validate real data at runtime. This means TypeScript cannot protect you from invalid API responses, user input, or external data sources.
+
+Zod, on the other hand, works at runtime. It validates actual data and ensures that incoming values match the expected schema. At the same time, it can infer TypeScript types directly from the schema, which removes duplication and keeps types and validation in sync.
+
+Together, they eliminate the gap between expected types and real-world data, making applications more predictable and safer.
+
+---
+
 # Form Architecture
 
 ## 1. Create Zod Schema
@@ -267,4 +279,4 @@ This example includes:
 Learned from Матвей Клёнов
 
 - YouTube Channel: https://www.youtube.com/@y0na24
-- Guide: https://www.youtube.com/watch?v=vI28woiCpCQ&t=50s
+- Guide: https://www.youtube.com/watch?v=vI28woiCpCQ

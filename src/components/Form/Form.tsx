@@ -40,7 +40,7 @@ const formSchema = z
     /*
       HTML input always returns string.
 
-      z.coerce.number()
+      z.coerce.number() coerce - принуждение
       automatically converts:
 
       "18" -> 18
@@ -128,18 +128,34 @@ const Form = () => {
     3. Output type after resolver
   */
   const { register, control, handleSubmit, formState, reset, watch } =
+    //const values = useFetch("/api") or const {errors, data} = useFetch("/api")
     useForm<FormStateInput, unknown, FormStateOutput>({
       /*
         Connect React Hook Form with Zod
       */
       resolver: zodResolver(formSchema),
-
       /*
         Initial form values
       */
       defaultValues: {
         role: undefined,
       },
+      //defaultValue
+      //values
+      //errors
+      //resetOptions: {
+      //keepDirtyValues: true,
+      //keepErrors: true
+      //}
+      //shouldUseNativeValidation: true
+      //resolver - Zod, Yup
+      //mode: 'onBlur' // 'onSubmit', 'onChange', 'onTouched', 'all'
+      //reValidateMode
+      //criteriaMode: 'firstError' // 'all' 
+      //delayError
+      //shouldFocusError: false
+      //disabled
+      //progressive
     });
 
   /*
@@ -187,7 +203,17 @@ const Form = () => {
             register() connects input
             to RHF internal state
           */}
-          <input type="text" placeholder="email" {...register("email")} />
+          <input type="text" placeholder="email" {...register("email" /*
+              , {
+              required: 'Mail required',
+              pattern: {
+                value: /RegExp/,
+                message: '...'
+              },
+              validate: () => {
+              ...
+              }
+              }*/)} />
 
           {/*
             errors.field?.message
