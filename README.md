@@ -1,28 +1,27 @@
 # React Hook Form + Zod
 
-```html
 <div>
   <img
     src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"
     alt="TypeScript"
   />
 
-  <img
+<img
     src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
     alt="React"
   />
 
-  <img
+<img
     src="https://img.shields.io/badge/React%20Hook%20Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white"
     alt="React Hook Form"
   />
 
-  <img
+<img
     src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white"
     alt="Zod"
   />
+
 </div>
-```
 
 ---
 
