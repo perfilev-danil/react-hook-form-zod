@@ -1,75 +1,282 @@
-# React + TypeScript + Vite
+# React Hook Form + Zod
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```html
+<div>
+  <img
+    src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"
+    alt="TypeScript"
+  />
 
-Currently, two official plugins are available:
+  <img
+    src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
+    alt="React"
+  />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+  <img
+    src="https://img.shields.io/badge/React%20Hook%20Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white"
+    alt="React Hook Form"
+  />
 
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  <img
+    src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white"
+    alt="Zod"
+  />
+</div>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Simple example of form validation using:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- React Hook Form
+- Zod
+- TypeScript
+
+This project demonstrates:
+
+- Form state management
+- Schema validation
+- Type-safe forms
+- Cross-field validation
+- Conditional fields
+- Controlled components with `Controller`
+
+---
+
+# Tech Stack
+
+- React
+- TypeScript
+- React Hook Form
+- Zod
+- @hookform/resolvers
+
+---
+
+# Installation
+
+```bash
+npm install
 ```
+
+Install dependencies:
+
+```bash
+npm install react-hook-form zod @hookform/resolvers
+```
+
+Run development server:
+
+```bash
+npm run dev
+```
+
+---
+
+# Why React Hook Form?
+
+React Hook Form provides:
+
+- Minimal re-renders
+- High performance
+- Easy form state management
+- Simple validation integration
+- Excellent TypeScript support
+
+---
+
+# Why Zod?
+
+Zod provides:
+
+- Runtime validation
+- Static TypeScript inference
+- Schema-based validation
+- Safe data parsing
+- Cross-field validation
+
+---
+
+# Form Architecture
+
+## 1. Create Zod Schema
+
+```ts
+const formSchema = z.object({
+  email: z.email(),
+  password: z.string(),
+});
+```
+
+The schema becomes the single source of truth for:
+
+- validation
+- types
+- transformations
+
+---
+
+## 2. Connect Zod to React Hook Form
+
+```ts
+useForm({
+  resolver: zodResolver(formSchema),
+});
+```
+
+`zodResolver` allows React Hook Form to delegate validation to Zod.
+
+---
+
+## 3. Register Inputs
+
+```tsx
+<input {...register("email")} />
+```
+
+`register()` connects native inputs to RHF internal state.
+
+---
+
+## 4. Display Errors
+
+```tsx
+{
+  errors.email?.message && <p>{errors.email.message}</p>;
+}
+```
+
+Validation errors are available inside:
+
+```ts
+formState.errors;
+```
+
+---
+
+# Controlled Components
+
+For controlled inputs or custom UI libraries (`MUI`, `Ant Design`, etc.) use `Controller`.
+
+Example:
+
+```tsx
+<Controller
+  control={control}
+  name="role"
+  render={({ field }) => (
+    <input value={field.value} onChange={field.onChange} />
+  )}
+/>
+```
+
+---
+
+# Cross-Field Validation
+
+Zod supports object-level validation using `.refine()`.
+
+Example:
+
+```ts
+.refine((data) => data.password === data.confirmPassword, {
+  path: ["confirmPassword"],
+  error: "Passwords do not match",
+});
+```
+
+Useful for:
+
+- password confirmation
+- conditional validation
+- dependent fields
+
+---
+
+# Type Safety
+
+## Input Type
+
+```ts
+type FormInput = z.input<typeof formSchema>;
+```
+
+Represents raw form values before parsing.
+
+---
+
+## Output Type
+
+```ts
+type FormOutput = z.output<typeof formSchema>;
+```
+
+Represents validated/transformed data after Zod parsing.
+
+---
+
+# Conditional Fields
+
+Example:
+
+```tsx
+{
+  role === "ADMIN" && <input {...register("adminCode")} />;
+}
+```
+
+`watch()` is used to subscribe to field changes.
+
+---
+
+# Important RHF Concepts
+
+## watch()
+
+Subscribes component to form field changes.
+
+```ts
+const role = watch("role");
+```
+
+---
+
+## reset()
+
+Resets form state to default values.
+
+```ts
+reset();
+```
+
+---
+
+## handleSubmit()
+
+Runs validation before submit.
+
+```ts
+<form onSubmit={handleSubmit(onSubmit)}>
+```
+
+---
+
+# Example Features
+
+This example includes:
+
+- Email validation
+- Password validation
+- Confirm password validation
+- Age transformation (`string -> number`)
+- Role selection
+- Conditional admin code field
+- Cross-field validation
+
+---
+
+# Useful Links
+
+Learned from Матвей Клёнов
+YouTube Channel: https://www.youtube.com/@y0na24
+Guide: https://www.youtube.com/watch?v=vI28woiCpCQ&t=50s
