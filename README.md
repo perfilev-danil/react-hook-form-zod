@@ -276,7 +276,7 @@ This example includes:
 
 # Useful Links
 
-Learned from Матвей Клёнов
+Based on the guide by Матвей Клёнов
 
 - YouTube Channel: https://www.youtube.com/@y0na24
 - Guide: https://www.youtube.com/watch?v=vI28woiCpCQ
