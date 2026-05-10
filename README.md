@@ -1,28 +1,23 @@
 # React Hook Form + Zod
 
 <div>
-  <img
+
+<img
     src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"
     alt="TypeScript"
-  >
-
+/>
 <img
-src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
-alt="React"
-
->
-
+    src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
+    alt="React"
+    />
 <img
-src="https://img.shields.io/badge/React%20Hook%20Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white"
-alt="React Hook Form"
-
->
-
+    src="https://img.shields.io/badge/React%20Hook%20Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white"
+    alt="React Hook Form"
+  />
 <img
-src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white"
-alt="Zod"
-
->
+    src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white"
+    alt="Zod"
+  />
 
 </div>
 
@@ -42,16 +37,6 @@ This project demonstrates:
 - Cross-field validation
 - Conditional fields
 - Controlled components with `Controller`
-
----
-
-# Tech Stack
-
-- React
-- TypeScript
-- React Hook Form
-- Zod
-- @hookform/resolvers
 
 ---
 
@@ -280,5 +265,6 @@ This example includes:
 # Useful Links
 
 Learned from Матвей Клёнов
-YouTube Channel: https://www.youtube.com/@y0na24
-Guide: https://www.youtube.com/watch?v=vI28woiCpCQ&t=50s
+
+- YouTube Channel: https://www.youtube.com/@y0na24
+- Guide: https://www.youtube.com/watch?v=vI28woiCpCQ&t=50s
